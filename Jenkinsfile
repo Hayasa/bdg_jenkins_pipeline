@@ -2,11 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Delete docker images') {
             steps {
-                echo 'Hello World'
+                sh docker system prune -a
+            }
+        }
+	stage('Stop and delete docker containers') {
+	    steps {
+	        sh docker stop $(docker ps -a -q)
+                sh docker rm $(docker ps -a -q)
+            }
+        }
+	    	
+	stage('Docker build') {
+	    steps {
+	        sh docker build -t homework3 .       
             }
         }
     }
 }
-
