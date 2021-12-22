@@ -21,18 +21,6 @@ pipeline {
 	        steps {
 	            sh "docker build -t homework3 ."       
             }
-        }
-
-        stage('Docker run') {
-	        steps {
-	            sh "docker run -p 8081:80 -d homework3"       
-            }
-        }
-
-        stage('Test') {
-	        steps {
-	            sh "curl localhost:8081"       
-            }
-        }
+        }      
     }
 }
