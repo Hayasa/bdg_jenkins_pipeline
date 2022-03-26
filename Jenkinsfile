@@ -2,7 +2,7 @@ pipeline {
     agent { label 'node1' } 
 
     stages {
-        stage('Delete docker image') {
+        stage('Delete docker images') {
             steps {
                 sh "docker system prune -a"
             }
